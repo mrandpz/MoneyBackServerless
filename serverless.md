@@ -50,3 +50,7 @@ module.exports.handler = function (req, resp, context) {
 
 ```
 fun local invoke 支持本地运行事件函数，fun local start 支持本地运行 HTTP 触发器函数以及事件函数。
+
+yarn 后执行 fun install   待验证
+
+fun deploy 命令部署函数
