@@ -1,6 +1,5 @@
 var MongoClient = require("mongodb").MongoClient;
-var url =
-  "mongodb://user41008589@dds-wz9ut506vqrlvggu-pub.mongodb.rds.aliyuncs.com:3717/?authSource=admin";
+var url = "mongodb://user41008589@dds-wz9ut506vqrlvggu-pub.mongodb.rds.aliyuncs.com:3717/?authSource=admin";
 
 module.exports.handler = function (req, resp, context) {
   getRawBody(req, function (err, body) {
