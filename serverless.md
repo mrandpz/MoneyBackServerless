@@ -26,7 +26,7 @@ module.exports.initializer = function(context, callback) {
 */
 var MongoClient = require("mongodb").MongoClient;
 var url =
-  "db地址.mongodb.rds.aliyuncs.com:3717/admin";
+  "[db地址.mongodb.rds.aliyuncs.com:3717/admin](mongodb://user41008589:Password@dds-wz9ut506vqrlvggu-pub.mongodb.rds.aliyuncs.com:3717/admin)";
 
 module.exports.handler = function (req, resp, context) {
   getRawBody(req, function (err, body) {
@@ -54,3 +54,5 @@ fun local invoke 支持本地运行事件函数，fun local start 支持本地�
 yarn 后执行 fun install   待验证
 
 fun deploy 命令部署函数
+
+
