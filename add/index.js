@@ -10,6 +10,7 @@ module.exports.handler = function (req, resp, context) {
       const requestPayload = JSON.parse(body.toString());
       const insertObject = {
         title: requestPayload.title,
+        done: false,
       };
 
       var dbo = db.db(dbname);
