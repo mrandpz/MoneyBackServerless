@@ -1,25 +1,33 @@
 var getRawBody = require("raw-body");
 
-var MongoClient = require("mongodb").MongoClient;
+var { MongoClient, ObjectID } = require("mongodb");
 const { url, dbname, collection } = require("./serverAddress");
 
-// todo  表名 由用户传入
 module.exports.handler = function (req, resp, context) {
   getRawBody(req, function (err, body) {
     MongoClient.connect(url, { useUnifiedTopology: true }, function (err, db) {
       if (err) throw err;
+      const requestPayload = JSON.parse(body.toString());
+      const whereStr = {
+        _id: ObjectID(requestPayload._id),
+      };
+
+      const updateStr = {
+        $set: {
+          done: true,
+        },
+      };
+
       var dbo = db.db(dbname);
       dbo
         .collection(collection)
-        .find({})
-        .toArray(function (err, result) {
-          // 返回集合中所有数据
+        .updateOne(whereStr, updateStr, function (err, obj) {
           if (err) throw err;
           db.close();
           resp.send(
             JSON.stringify({
               code: 200,
-              data: result,
+              message: "update success",
             })
           );
         });
